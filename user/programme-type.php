@@ -46,9 +46,7 @@
                    <fieldset class="form-group position-relative row g-10">
                     <label for="prg-type">Courses</label>
                    <select class="col-md-12" name="prg-type" id="prg">
-                        <option value="UG">Btech</option>
-                        <option value="PG">Integrated MA</option>
-                        <option value="PHD">Integrated MSc</option>
+                        <option value="PG">Select a Programme First</option>
                     </select>
                     <p>
                          Your value <span id="changed"></span>
@@ -83,46 +81,22 @@
  </div>
 
  <script type="text/javascript">
-     var changedText = document.getElementById('changed');
-     var prg = document.getElementById('prg');
-     function listQ(){
-        changedText.textContent = this.value;
-    }
-    function addCourses() {
-        var x = document.getElementById("prg");
-        x.innerHTML = "<option value='1'> Kuch bhi </option>";
-    }
-document.getElementById("prg-type").onchange = addCourses;
 
 // Assuming you have included the jQuery library
 
-// Function to make the AJAX request
-function fetchCoursesByLevel(courseLevel) {
-  // AJAX request
-  $.ajax({
-    url: 'fetch_courses.php', // Replace with the actual URL to your server-side script
-    method: 'POST',
-    data: { level: courseLevel }, // Sending the selected course level as data
-    success: function(response) {
-      // Process the response
-      var courses = JSON.parse(response);
-      
-      // Use the fetched courses as per your requirements
-      // For example, you can iterate through the courses and display them on the webpage
-      courses.forEach(function(course) {
-        console.log(course.ID, course.Name, course.Description);
-        // Perform your desired actions with the course data
-      });
-    },
-    error: function(xhr, status, error) {
-      // Handle the error if the AJAX request fails
-      console.log(error);
-    }
-  });
-}
-
-// Example usage: Fetch courses for UG level
-fetchCoursesByLevel('UG');
+$('#prg-type').change(function (){
+    let selectedItem = $('#prg-type').children("option:selected").val();
+    $.ajax({
+        type: "GET",
+        url: "fetch_courses.php",
+        data: {prg: selectedItem},
+        dataType: "html",
+        success: function (data){
+            // echo(data);
+            $('#prg').html(data);
+        }
+    });
+})
 
 
  </script>
