@@ -4,6 +4,10 @@
     <div class="container">
   <header class="row top-menu-top">
     <div class="accounts col-md-9 col-6">
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
       <?php
 
 $ret=mysqli_query($con,"select * from tblpage where PageType='contactus' ");
@@ -52,15 +56,41 @@ while ($row=mysqli_fetch_array($ret)) {
           <li class="nav-item">
             <a class="nav-link" href="notice-details.php">Public Notice</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="admin/login.php">Admin</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="user/login.php">Users</a>
-          </li>
+          
+          <li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Login
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="loginDropdown">
+    <li>
+      <a class="dropdown-item" href="admin/login.php">Admin</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="department/login.php">Department Login</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="user/login.php">Users</a>
+    </li>
+  </ul>
+</li>
+
+
         </ul>
        
       </div>
     </div>
   </nav>
 </section>
+
+<script>
+  // Add the following code after including the necessary Bootstrap JS file
+  
+  // Initialize the dropdown menu
+  var dropdownMenu = document.querySelector('.dropdown');
+  dropdownMenu.addEventListener('mouseenter', function() {
+    this.classList.add('show');
+  });
+  dropdownMenu.addEventListener('mouseleave', function() {
+    this.classList.remove('show');
+  });
+</script>

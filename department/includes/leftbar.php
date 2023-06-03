@@ -34,7 +34,7 @@
   
 
 
-<li class=" nav-item"><a href="#"><i class="la la-download"></i><span class="menu-title" data-i18n="nav.footers.main">Public Notice</span></a>
+<!-- <li class=" nav-item"><a href="#"><i class="la la-download"></i><span class="menu-title" data-i18n="nav.footers.main">Public Notice</span></a>
           <ul class="menu-content">
             <li><a class="menu-item" href="add-notice.php" data-i18n="nav.footers.footer_light">Add Notice</a>
             </li>
@@ -42,7 +42,7 @@
             </li>
          
           </ul>
-        </li>
+        </li> -->
 
 <li class=" nav-item"><a href="#"><i class="la la-download"></i><span class="menu-title" data-i18n="nav.footers.main">Enquiry</span></a>
           <ul class="menu-content">
@@ -53,20 +53,20 @@
          
           </ul>
         </li>
-        <li class=" nav-item"><a href="#"><i class="la la-download"></i><span class="menu-title" data-i18n="nav.footers.main">Pages</span></a>
+        <li class=" nav-item"><a href="bwdates-report-ds.php"><i class="la la-file"></i><span class="menu-title" data-i18n="nav.dash.main">Reports</span></a>
+        </li>
+        <!-- <li class=" nav-item"><a href="#"><i class="la la-download"></i><span class="menu-title" data-i18n="nav.footers.main">Pages</span></a>
           <ul class="menu-content">
             <li><a class="menu-item" href="aboutus.php" data-i18n="nav.footers.footer_light">About Us</a>
             </li>
             <li><a class="menu-item" href="contactus.php" data-i18n="nav.footers.footer_dark">Contact Us</a>
-            </li>
+            </li> -->
          
           </ul>
         </li>
-   <li class=" nav-item"><a href="subscriber.php"><i class="la la-users"></i><span class="menu-title" data-i18n="nav.dash.main">Subscriber</span></a>
-        </li>
-         <li class=" nav-item"><a href="bwdates-report-ds.php"><i class="la la-file"></i><span class="menu-title" data-i18n="nav.dash.main">Reports</span></a>
-        </li>
-         
+   <!-- <li class=" nav-item"><a href="subscriber.php"><i class="la la-users"></i><span class="menu-title" data-i18n="nav.dash.main">Subscriber</span></a>
+        </li> -->
+        
           </ul>
         </li>
       </ul>
