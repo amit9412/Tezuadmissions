@@ -71,7 +71,7 @@ if (strlen($_SESSION['aid']) == 0) {
                       <div class="media d-flex">
                         <div class="media-body text-left">
                           <?php
-                          $wer = mysqli_query($con, "SELECT ID from tbluser");
+                          $wer = mysqli_query($con, "SELECT * FROM tbladmapplications a JOIN tblcourse c ON a.CourseApplied = c.CourseName WHERE c.DepartmentID='$did';");
                           $cntuser = mysqli_num_rows($wer);
                           ?>
                           <h3 class="warning"><?php echo $cntuser; ?></h3>
