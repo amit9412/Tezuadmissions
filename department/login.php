@@ -12,7 +12,7 @@ if (isset($_POST['login'])) {
   $ret = mysqli_fetch_array($query);
   //echo  $ret;
   if ($ret > 0) {
-    $_SESSION['did'] = $ret['DepartmentID'];
+    $_SESSION['aid'] = $ret['DepartmentID'];
     echo "<script type='text/javascript'> document.location ='dashboard.php'; </script>";
   } else {
     echo "<script>alert('Invalid Details');</script>";
