@@ -86,7 +86,8 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                 </tr>
               </thead>
                <?php
-$ret=mysqli_query($con,"select * from tblcourse");
+$course = $_SESSION['aid'];
+$ret=mysqli_query($con,"select * from tblcourse where DepartmentID = '$course'");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 
