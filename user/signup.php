@@ -89,6 +89,7 @@ if (isset($_POST['submit'])) {
       </div>
     </div>
   </nav>
+ 
   <!-- ////////////////////////////////////////////////////////////////////////////-->
   <div class="app-content content">
     <div class="content-wrapper">
@@ -132,20 +133,80 @@ if (isset($_POST['submit'])) {
                         </div>
 
                       </div>
-                      <fieldset class="form-group position-relative has-icon-left">
+                      <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12">
+                        <fieldset class="form-group position-relative has-icon-left">
                         <input type="text" name="contactno" id="contactno" class="form-control input-lg" placeholder="Contact Number" required="true" maxlength="10" tabindex="3" required data-validation-required-message="Please enter display name.">
                         <div class="form-control-position">
                           <i class="ft-user"></i>
                         </div>
                         <div class="help-block font-small-3"></div>
                       </fieldset>
-                      <fieldset class="form-group position-relative has-icon-left">
+                        </div>
+                      </div>
+                      
+                      <div class="row">
+                        <div class="col-12 col-sm-9 col-md-9">
+                        <fieldset class="form-group position-relative has-icon-left">
                         <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4" required="true" required data-validation-required-message="Please enter email address.">
                         <div class="form-control-position">
                           <i class="ft-mail"></i>
                         </div>
                         <div class="help-block font-small-3"></div>
                       </fieldset>
+                        </div>
+                      <div class="col-12 col-sm-3 col-md-3">
+                          <fieldset class="form-group position-relative has-icon-left">
+                          <button type="button" id="getOtp" style="cursor:not-allowed" name="getOtp" class="btn btn-link btn-md btn-block" onclick="sendMail(); showVerification();">Get OTP</button>
+                            <!-- <div class="form-control-position">
+                              <i class="la la-key"></i>
+                            </div> -->
+                            <div class="help-block font-small-3"></div>
+                          </fieldset>
+                        </div>
+                        <?php
+                        function sendMail(){
+                          $toemail = $_POST['email'];
+                          echo $toemail; 
+                          $subj="Admission Application Status";
+                          $heade ="";
+                          $msgec ="";       
+                          $heade .= "MIME-Version: 1.0"."\r\n";
+                          $heade .= 'Content-type: text/html; charset=iso-8859-1'."\r\n";
+                          $heade .= 'From:TezuAdmissions<noreply@yourdomain.com>'."\r\n"; 
+                          $msgec.="<html></body><div><div>Hello,</div></br></br>";
+                          $msgec.="<div style='padding-top:8px;'>Your Admission application has been $status ) </br>
+                          <strong>Admin Remark: </strong> $admrmk </div><div></div></body></html>";
+                          mail($toemail,$subj,$msgec,$heade); 
+                        }
+                        ?>          
+</div>
+
+                      <div class="row" id="otp-verify" style="display:none;">
+                        
+                        <div class="col-12 col-sm-9 col-md-9">
+                          <fieldset class="form-group position-relative has-icon-left">
+                            <input type="password" name="repeatpassword" id="repeatpassword" class="form-control input-lg" placeholder="Repeat Password" tabindex="6" data-validation-matches-match="password" required="true" data-validation-matches-message="Password & Confirm Password must be the same.">
+                            <div class="form-control-position">
+                              <i class="la la-key"></i>
+                            </div>
+                            <div class="help-block font-small-3"></div>
+                          </fieldset>
+                        </div>
+
+                        <div class="col-12 col-sm-3 col-md-3">
+                          <fieldset class="form-group position-relative has-icon-left">
+                          <button type="submit" name="submit" class="btn btn-primary btn-md btn-block"><!---<i class="ft-user">---></i>Verify</button>
+                            <!-- <div class="form-control-position">
+                              <i class="la la-key"></i>
+                            </div> -->
+                            <div class="help-block font-small-3"></div>
+                          </fieldset>
+                        </div>
+
+                      </div>
+
+
                       <div class="row">
                         <div class="col-12 col-sm-6 col-md-6">
                           <fieldset class="form-group position-relative has-icon-left">
@@ -156,6 +217,7 @@ if (isset($_POST['submit'])) {
                             <div class="help-block font-small-3"></div>
                           </fieldset>
                         </div>
+                        
                         <div class="col-12 col-sm-6 col-md-6">
                           <fieldset class="form-group position-relative has-icon-left">
                             <input type="password" name="repeatpassword" id="repeatpassword" class="form-control input-lg" placeholder="Repeat Password" tabindex="6" data-validation-matches-match="password" required="true" data-validation-matches-message="Password & Confirm Password must be the same.">
@@ -198,6 +260,7 @@ if (isset($_POST['submit'])) {
       <span class="float-md-left d-block d-md-inline-block">Copyright &copy; <?php echo date('Y'); ?> <a class="text-bold-800 grey darken-2">Tezpur University</a>, All rights reserved. </span>
     </p>
   </footer>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
   <script src="../app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
   <script src="../app-assets/vendors/js/forms/validation/jqBootstrapValidation.js" type="text/javascript"></script>
   <script src="../app-assets/vendors/js/forms/icheck/icheck.min.js" type="text/javascript"></script>
@@ -205,6 +268,34 @@ if (isset($_POST['submit'])) {
   <script src="../app-assets/js/core/app.js" type="text/javascript"></script>
   <script src="../app-assets/js/scripts/customizer.js" type="text/javascript"></script>
   <script src="../app-assets/js/scripts/forms/form-login-register.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+      let email_id = document.getElementById("email");
+      email_id.addEventListener('change', function()
+        {
+          let result = email_id.checkValidity();
+          let getOtp = document.getElementById("getOtp");
+          if(result == true){
+            getOtp.style.cursor="pointer";
+          }
+          else{
+            getOtp.style.cursor = "not-allowed";
+          }
+        }
+      )
+      
+    function showVerification(){
+      sendEmail();
+      var getOtpBtn = document.getElementById("otp-verify");
+      let getOtp = document.getElementById("getOtp");
+      if(getOtp.style.cursor == "pointer"){
+        if(getOtpBtn.style.display=="none"){
+          getOtpBtn.style.display = "flex";
+        }
+      }
+    }
+
+  </script>
 </body>
 
 </html>
