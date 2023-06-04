@@ -5,6 +5,7 @@ include('includes/dbconnection.php');
 if (strlen($_SESSION['aid']) == 0) {
   header('location:logout.php');
 } else {
+  $did=$_SESSION['aid'];
 ?>
   <!DOCTYPE html>
   <html class="loading" lang="en" data-textdirection="ltr">
@@ -20,8 +21,8 @@ if (strlen($_SESSION['aid']) == 0) {
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon/favicon-16x16.png">
   </head>
 
-  <body class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
-    <?php include_once('includes/header.php'); ?>
+  <body class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">  
+  <?php include_once('includes/header.php'); ?>
     <?php include_once('includes/leftbar.php'); ?>
     <div class="app-content content">
       <div class="content-wrapper">
@@ -37,7 +38,7 @@ if (strlen($_SESSION['aid']) == 0) {
                       <div class="media d-flex">
                         <div class="media-body text-left">
                           <?php
-                          $sql = mysqli_query($con, "SELECT ID from tblcourse");
+                          $sql = mysqli_query($con,"SELECT ID FROM `tblcourse` WHERE DepartmentID ='$did';");
                           $cntcourse = mysqli_num_rows($sql);
 
                           ?>

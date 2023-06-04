@@ -10,7 +10,7 @@ if(isset($_POST['submit']))
   {
     $departmentName=$_POST['deptname'];
      $departmentID=$_POST['deptid'];
-     $departmentPassword=sha1($_POST['deptpass']);
+     $departmentPassword=md5($_POST['deptpass']);
      $departmentUserID=$_POST['deptuname'];
     $query=mysqli_query($con, "insert into  tbldepartment(DepartmentID,name,UserName,Password) value('$departmentID','$departmentName','$departmentUserID','$departmentPassword')");
     if ($query) {

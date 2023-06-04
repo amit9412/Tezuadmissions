@@ -120,8 +120,7 @@ while ($row=mysqli_fetch_array($ret)) {
                           <div class="form-group">
 
    <textarea class="form-control white_bg" name="coursedesc"><?php echo $row['CourseDescription'];?></textarea>
-                          </div>
-                        </fieldset>
+</div>
                       </div>
                     </div>
 <?php } ?>

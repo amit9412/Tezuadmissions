@@ -36,7 +36,7 @@
                 <span class="mr-1">Hello,
                   <?php
                   $admid = $_SESSION['aid'];
-                  $ret = mysqli_query($con, "select AdminName from tbladmin where ID='$admid'");
+                  $ret = mysqli_query($con, "select UserName from tbldepartment where DepartmentID='$admid'");
                   $row = mysqli_fetch_array($ret);
                   $name = $row['AdminName'];
 

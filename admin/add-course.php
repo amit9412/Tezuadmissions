@@ -9,8 +9,10 @@ if (strlen($_SESSION['aid']==0)) {
 if(isset($_POST['submit']))
   {
     $coursename=$_POST['coursename'];
-     $coursedesc=$_POST['coursedesc'];
-    $query=mysqli_query($con, "insert into  tblcourse(CourseName,CourseDescription) value('$coursename','$coursedesc')");
+    $DeptID=$_POST['deptid'];
+    $coursedesc=$_POST['coursedesc'];
+    $PrgType = $_POST['PrgType'];
+    $query=mysqli_query($con, "insert into  tblcourse(CourseName,CourseDescription,DepartmentID, ProgrammeType) value('$coursename','$coursedesc','$DeptID','$PrgType')");
     if ($query) {
   
     echo '<script>alert("Course has been added.")</script>';
@@ -102,18 +104,41 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                       <div class="col-xl-6 col-lg-12">
                         <fieldset>
                           <h5>Course Name
-                         
                           </h5>
                           <div class="form-group">
 
   <input class="form-control white_bg" id="coursename" type="text" name="coursename" required>
  
                           </div>
+                          <fieldset>
+                       <tr>
+                    <th>Course Department</th>
+                    
+                    <!-- <td><?php echo $row['name'];?></td> -->
+                          </h5>
                           <div class="form-group">
-
+                          <select class="form-control white-bg col-md-12" name="deptid" id="prg">
+                        <option value="">---Select---</option>
+                    </select>                          </div>
+                        </fieldset>
+                          <div class="form-group">
+<h5>Course Description</h5>
    <textarea class="form-control white_bg" name="coursedesc"></textarea>
                           </div>
                         </fieldset>
+                        <fieldset>
+                          <h5>Course Name
+                          </h5>
+                          <div class="form-group">
+
+                        <select class="form-control white-bg col-md-12" name="PrgType" id="PrgType">
+                          <option value="UG">UG</option>
+                          <option value="PG">PG</option>
+                          <option value="PHD">PHD</option>
+                          </select> 
+                          
+                          </div>
+</fieldset>
                       </div>
                     </div>
 
@@ -143,7 +168,24 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 <?php include('includes/footer.php');?>
   <!-- BEGIN VENDOR JS-->
  
+  <script type="text/javascript">
 
+// Assuming you have included the jQuery library
+
+$('#prg-type').ready(function (){
+    $.ajax({
+        type: "GET",
+        url: "fetch_department.php",
+        dataType: "html",
+        success: function (data){
+            // echo(data);
+            $('#prg').html(data);
+        }
+    });
+})
+
+
+ </script>
 </body>
 </html>
 <?php }  ?>
