@@ -100,7 +100,7 @@ if (strlen($_SESSION['aid']) == 0) {
                       <div class="media d-flex">
                         <div class="media-body text-left">
                           <?php
-                          $rtp = mysqli_query($con, "SELECT ID from tbladmapplications where AdminStatus is null");
+                          $rtp = mysqli_query($con, "SELECT UserId FROM tbladmapplications a JOIN tblcourse c ON a.CourseApplied = c.CourseName WHERE c.DepartmentID='$did' AND a.AdminStatus is null");
                           $penapp = mysqli_num_rows($rtp);
                           ?>
                           <h3 class="info"><?php echo $penapp; ?></h3>
@@ -126,7 +126,7 @@ if (strlen($_SESSION['aid']) == 0) {
                       <div class="media d-flex">
                         <div class="media-body text-left">
                           <?php
-                          $yui = mysqli_query($con, "SELECT ID from tbladmapplications where AdminStatus='1'");
+                          $yui = mysqli_query($con, "SELECT UserId FROM tbladmapplications a JOIN tblcourse c ON a.CourseApplied = c.CourseName WHERE c.DepartmentID='$did' AND a.AdminStatus='1' ");
                           $selapp = mysqli_num_rows($yui);
                           ?>
                           <h3 class="warning"><?php echo $selapp; ?></h3>
@@ -152,7 +152,7 @@ if (strlen($_SESSION['aid']) == 0) {
                       <div class="media d-flex">
                         <div class="media-body text-left">
                           <?php
-                          $poi = mysqli_query($con, "SELECT ID from tbladmapplications where AdminStatus='2'");
+                          $poi = mysqli_query($con, "SELECT UserId FROM tbladmapplications a JOIN tblcourse c ON a.CourseApplied = c.CourseName WHERE c.DepartmentID='$did' AND a.AdminStatus='2'");
                           $rejapp = mysqli_num_rows($poi);
                           ?>
                           <h3 class="success"><?php echo $rejapp; ?></h3>
