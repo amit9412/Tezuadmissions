@@ -4,12 +4,15 @@ error_reporting(0);
 include('includes/dbconnection.php');
 
 if (isset($_POST['login'])) {
-  $adminuser = $_POST['username'];
-  $password = md5($_POST['password']);
-  $query = mysqli_query($con, "select ID from tbladmin where  AdminuserName='$adminuser' && Password='$password' ");
+  $deptuser = $_POST['username'];
+  //echo $deptuser;
+ $password = md5($_POST['password']);
+  //echo $password;
+  $query = mysqli_query($con, "select DepartmentID from tbldepartment where  UserName='$deptuser' && Password='$password' ");
   $ret = mysqli_fetch_array($query);
+  //echo  $ret;
   if ($ret > 0) {
-    $_SESSION['aid'] = $ret['ID'];
+    $_SESSION['did'] = $ret['DepartmentID'];
     echo "<script type='text/javascript'> document.location ='dashboard.php'; </script>";
   } else {
     echo "<script>alert('Invalid Details');</script>";
@@ -19,14 +22,12 @@ if (isset($_POST['login'])) {
 ?>
 
 
-
-
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
 
 <head>
 
-  <title>Admin Login
+  <title>Department Login
   </title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700" rel="stylesheet">
   <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
@@ -65,7 +66,7 @@ if (isset($_POST['login'])) {
           <li class="nav-item">
             <a class="navbar-brand" href="../index.php">
 
-              <h3 class="brand-text">Tezpur University Online Admission Portal | Admin login</h3>
+              <h3 class="brand-text">Tezpur University Online Admission Portal | Department login</h3>
             </a>
           </li>
           <li class="nav-item d-md-none">
@@ -95,7 +96,7 @@ if (isset($_POST['login'])) {
               <div class="card border-grey border-lighten-3 m-0">
                 <div class="card-header border-0 pb-0">
                   <div class="card-title text-center">
-                    <h4 style="font-weight: bold"> Tezu Addmission Admin Login</h4>
+                    <h4 style="font-weight: bold"> Tezu Addmission Department Login</h4>
                   </div>
                   <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
                     <span>Login</span>

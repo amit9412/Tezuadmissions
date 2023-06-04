@@ -13,7 +13,7 @@ $ret=mysqli_query($con,"select * from tbldepartment where DepartmentID='$cid'");
 $row=mysqli_fetch_array($ret);
     $departmentName=$_POST['deptname'];
      $departmentID=$_POST['deptid'];
-     $departmentPassword=sha1($_POST['deptpass']);
+     $departmentPassword=md5($_POST['deptpass']);
      $departmentUserID=$_POST['deptuname'];
     $eid=$_GET['editid'];
     if($departmentPassword==''){

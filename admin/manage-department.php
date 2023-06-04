@@ -104,9 +104,7 @@ while ($row=mysqli_fetch_array($ret)) {
 $cnt=$cnt+1;
 }?>
    
-
 </table>
-
 
 </div>
       </div>
