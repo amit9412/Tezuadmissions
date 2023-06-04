@@ -9,9 +9,9 @@ if (strlen($_SESSION['aid']==0)) {
     if(isset($_GET['delid']))
   {
     $rowid=$_GET['delid'];
-    $query=mysqli_query($con,"delete from tblcourse where ID='$rowid'");
-    echo "<script>alert('Course Deleted successfully');</script>";
-    echo "<script>window.location.href='manage-course.php'</script>";
+    $query=mysqli_query($con,"delete from tbldepartment where DepartmentID='$rowid'");
+    echo "<script>alert('Department Deleted successfully');</script>";
+    echo "<script>window.location.href='manage-department.php'</script>";
   }
 
 ?>
@@ -63,7 +63,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                 </li>
             
                 </li>
-                <li class="breadcrumb-item active">Manage Course
+                <li class="breadcrumb-item active">Manage Department
                 </li>
                 
               </ol>
@@ -80,13 +80,13 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
  <thead>
                 <tr>
                   <th>S.NO</th>
-                  <th>Course Name</th>
+                  <th>Department Name</th>
               
                    <th>Action</th>
                 </tr>
               </thead>
                <?php
-$ret=mysqli_query($con,"select * from tblcourse");
+$ret=mysqli_query($con,"select * from tbldepartment");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 
@@ -95,10 +95,10 @@ while ($row=mysqli_fetch_array($ret)) {
                 <tr>
                   <td><?php echo $cnt;?></td>
               
-                  <td><?php  echo $row['CourseName'];?></td>
+                  <td><?php  echo $row['name'];?></td>
                 
-                  <td><a href="edit-course.php?editid=<?php echo $row['ID'];?>"><i class="la la-edit"></i></a> |
-                    <a href="manage-course.php?delid=<?php echo $row['ID'];?>" style="color:red" onclick="return confirm('Do you really want to delete this course?');"><i class="la la-trash"></i></a>
+                  <td><a href="edit-department.php?editid=<?php echo $row['DepartmentID'];?>"><i class="la la-edit"></i></a> |
+                    <a href="manage-department.php?delid=<?php echo $row['DepartmentID'];?>" style="color:red" onclick="return confirm('Do you really want to delete this course?');"><i class="la la-trash"></i></a>
                 </tr>
                 <?php 
 $cnt=$cnt+1;

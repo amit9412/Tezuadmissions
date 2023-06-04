@@ -190,6 +190,32 @@ if (strlen($_SESSION['aid']) == 0) {
                 </div>
               </div>
             </div>
+            <div class="col-xl-4 col-lg-6 col-12">
+              <div class="card pull-up">
+                <div class="card-content">
+                  <a href="manage-department.php">
+                    <div class="card-body">
+                      <div class="media d-flex">
+                        <div class="media-body text-left">
+                          <?php
+                          $poi = mysqli_query($con, "SELECT DepartmentID from tbldepartment ");
+                          $deptcount = mysqli_num_rows($poi);
+                          ?>
+                          <h3 class="info"><?php echo $deptcount; ?></h3>
+                          <h6>Departments</h6>
+                        </div>
+                        <div>
+                          <i class="icon-user-follow success font-large-2 float-right"></i>
+                        </div>
+                      </div>
+                      <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                        <div class="progress-bar bg-gradient-x-info" role="progressbar" style="width: 100%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
