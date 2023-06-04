@@ -24,7 +24,7 @@ if(isset($_POST['submit']))
   
 }
   ?>
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
 <head>
 
