@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2023 at 01:23 PM
+-- Generation Time: Jun 04, 2023 at 07:32 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -160,10 +160,13 @@ CREATE TABLE `tblcourse` (
 --
 
 INSERT INTO `tblcourse` (`ID`, `CourseName`, `CourseDescription`, `DepartmentID`, `CreationDate`, `ProgrammeType`) VALUES
-(1, 'B.Tech', 'The Bachelor of Technology (B.Tech) program is a four-year undergraduate degree that focuses on engineering and technology. This course provides students with a strong foundation in core engineering concepts, practical skills, and problem-solving abilities. B.Tech graduates are equipped with the knowledge and expertise to innovate, design, and develop technological solutions in various fields, ranging from computer science and electrical engineering to mechanical and civil engineering.', '', '2022-02-28 06:31:24', ''),
-(2, 'MBA', 'The Master of Business Administration (MBA) program is a prestigious postgraduate degree that prepares individuals for leadership and management roles in the business world. This course provides a comprehensive understanding of business principles, strategic management, finance, marketing, and entrepreneurship. MBA graduates possess the necessary skills to navigate complex business environments, make informed decisions, and drive organizational growth and success.', '', '2023-05-19 19:28:19', ''),
-(4, 'MCA', 'The Master of Computer Applications (MCA) program is a postgraduate degree that further enhances the knowledge and skills gained during a BCA or related undergraduate program. This course delves deeper into advanced topics such as software engineering, data structures, artificial intelligence, and computer networks. MCA graduates possess advanced programming expertise and are well-prepared for roles in software development, system analysis, database administration, and other specialized areas of computer science.', '', '2023-05-19 19:28:55', ''),
-(7, 'MA in Linguistics ', 'The Linguistics MA aims to give students a thorough grounding in modern theoretical linguistics. Students gain a basic understanding of the three core areas of linguistics: phonetics and phonology; syntax; and semantics and pragmatics, and are then able to tailor the programme to meet their personal linguistic interests.', '', '2023-05-30 16:54:22', '');
+(1, 'B.Tech', 'The Bachelor of Technology (B.Tech) program is a four-year undergraduate degree that focuses on engineering and technology. This course provides students with a strong foundation in core engineering concepts, practical skills, and problem-solving abilities. B.Tech graduates are equipped with the knowledge and expertise to innovate, design, and develop technological solutions in various fields, ranging from computer science and electrical engineering to mechanical and civil engineering.', 'CSE', '2022-02-28 06:31:24', 'UG'),
+(4, 'MCA', 'The Master of Computer Applications (MCA) program is a postgraduate degree that further enhances the knowledge and skills gained during a BCA or related undergraduate program. This course delves deeper into advanced topics such as software engineering, data structures, artificial intelligence, and computer networks. MCA graduates possess advanced programming expertise and are well-prepared for roles in software development, system analysis, database administration, and other specialized areas of computer science.\r\nTest Edit', 'CSE', '2023-05-19 19:28:55', 'PG'),
+(8, 'M. Tech', 'The objective of the two-year M.Tech (CSE) programme is to produce post-graduates with advanced knowledge in one or more areas of Computer Science. The programme is designed such that a student can complete it based on advanced coursework alone.', '', '2023-06-04 12:06:18', ''),
+(13, 'M. Tech(IT)', 'ABCD', 'CSE', '2023-06-04 14:59:43', 'PG'),
+(14, 'MA ', 'ABCD', 'EFL', '2023-06-04 16:45:02', 'PG'),
+(15, 'PHD in CS', '', 'CSE', '2023-06-04 16:45:14', 'PHD'),
+(16, 'PHD in Linguisticcs', '', 'EFL', '2023-06-04 16:45:39', 'PHD');
 
 -- --------------------------------------------------------
 
@@ -174,8 +177,18 @@ INSERT INTO `tblcourse` (`ID`, `CourseName`, `CourseDescription`, `DepartmentID`
 CREATE TABLE `tbldepartment` (
   `DepartmentID` varchar(10) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `Password` varchar(20) NOT NULL
+  `UserName` varchar(20) NOT NULL,
+  `Password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbldepartment`
+--
+
+INSERT INTO `tbldepartment` (`DepartmentID`, `name`, `UserName`, `Password`) VALUES
+('CSE', 'Computer Science and Engineering', 'CSE', '25d55ad283aa400af464c76d713c07ad'),
+('EFL', 'Linguistics and language Technology', 'Test2', '25d55ad283aa400af464'),
+('EGL', 'Test', 'Test1', '25d55ad283aa400af464');
 
 -- --------------------------------------------------------
 
@@ -339,7 +352,9 @@ ALTER TABLE `tblcourse`
 -- Indexes for table `tbldepartment`
 --
 ALTER TABLE `tbldepartment`
-  ADD PRIMARY KEY (`DepartmentID`);
+  ADD PRIMARY KEY (`DepartmentID`),
+  ADD UNIQUE KEY `UserName` (`UserName`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `tblfees`
@@ -397,7 +412,7 @@ ALTER TABLE `tblcontact`
 -- AUTO_INCREMENT for table `tblcourse`
 --
 ALTER TABLE `tblcourse`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tblfees`
