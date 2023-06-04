@@ -13,6 +13,8 @@ if (isset($_POST['login'])) {
   //echo  $ret;
   if ($ret > 0) {
     $_SESSION['aid'] = $ret['DepartmentID'];
+    //echo $_SESSION['aid'];
+    echo "<script>alert('Login Successful. Redirecting to Dashboard');</script>";
     echo "<script type='text/javascript'> document.location ='dashboard.php'; </script>";
   } else {
     echo "<script>alert('Invalid Details');</script>";

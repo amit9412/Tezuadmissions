@@ -38,7 +38,7 @@
                   $admid = $_SESSION['aid'];
                   $ret = mysqli_query($con, "select UserName from tbldepartment where DepartmentID='$admid'");
                   $row = mysqli_fetch_array($ret);
-                  $name = $row['AdminName'];
+                  $name = $row['UserName'];
 
                   ?>
                   <span class="user-name text-bold-700"><?php echo $name; ?></span>
@@ -58,7 +58,7 @@
                 </div>
             </li>
 
-            <?php $qury = mysqli_query($con, "SELECT  tbladmapplications.ID as appid,tbluser.FirstName,tbladmapplications.CourseApplieddate from tbladmapplications join tbluser on tbluser.ID=tbladmapplications.UserId where tbladmapplications.AdminStatus is null");
+            <?php $qury = mysqli_query($con, "SELECT  tbladmapplications.ID as appid,tbluser.FirstName,tbladmapplications.CourseApplieddate from tbladmapplications join tbluser on tbluser.ID=tbladmapplications.UserId where tbladmapplications.AdminStatus = 'NULL'");
             $num = mysqli_num_rows($qury);
             ?>
 

@@ -1,12 +1,17 @@
 <?php
 session_start();
-error_reporting(0);
+error_reporting();
 include('includes/dbconnection.php');
 if (strlen($_SESSION['aid']) == 0) {
   header('location:logout.php');
 } else {
   $did=$_SESSION['aid'];
+  //echo $did;
 ?>
+
+
+
+
   <!DOCTYPE html>
   <html class="loading" lang="en" data-textdirection="ltr">
 
@@ -38,6 +43,7 @@ if (strlen($_SESSION['aid']) == 0) {
                       <div class="media d-flex">
                         <div class="media-body text-left">
                           <?php
+                          echo $did;
                           $sql = mysqli_query($con,"SELECT ID FROM `tblcourse` WHERE DepartmentID ='$did';");
                           $cntcourse = mysqli_num_rows($sql);
 
