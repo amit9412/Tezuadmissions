@@ -85,7 +85,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
               </thead>
   <?php
             
-$ret=mysqli_query($con,"select tbladmapplications.CourseApplied,tbladmapplications.AdminStatus,tbladmapplications.ID as apid, tbluser.FirstName,tbluser.LastName,tbluser.MobileNumber,tbluser.Email from  tbladmapplications inner join tbluser on tbluser.ID=tbladmapplications.UserId");
+$ret=mysqli_query($con,"select tbladmapplications.CourseApplied,tbladmapplications.AdminStatus,tbladmapplications.ID as apid, tbluser.FirstName,tbluser.LastName,tbluser.MobileNumber,tbluser.Email from  tbladmapplications inner join tbluser on tbluser.ID=tbladmapplications.UserId inner join tblcourse on tbladmapplications.CourseApplied = tblcourse.CourseName");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 
