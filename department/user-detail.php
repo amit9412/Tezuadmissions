@@ -9,7 +9,7 @@ if (strlen($_SESSION['aid']==0)) {
     if(isset($_GET['delid']))
   {
     $uid=$_GET['delid'];
-    $query=mysqli_query($con,"delete  tbluser,tbladmapplications from tbluser
+    $query=mysqli_query($con,"delete tbluser,tbladmapplications from tbluser
 left join tbladmapplications on tbladmapplications.UserId=tbluser.ID
 where tbluser.ID='$uid'");
     echo "<script>alert('Record Deleted successfully');</script>";

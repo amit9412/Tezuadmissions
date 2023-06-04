@@ -3,6 +3,7 @@ session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
 if (strlen($_SESSION['aid']==0)) {
+  $did = $_SESSION['aid'];
   header('location:logout.php');
   } else{
 
