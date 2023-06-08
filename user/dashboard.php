@@ -1,6 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
+// mysqli_report(MYSQLI_REPORT_OFF);
 include('includes/dbconnection.php');
 if (strlen($_SESSION['uid']) == 0) {
   header('location:logout.php');
@@ -33,7 +34,7 @@ if (strlen($_SESSION['uid']) == 0) {
           $ret = mysqli_query($con, "select FirstName from tbluser where ID='$uid'");
           $row = mysqli_fetch_array($ret);
           $name = $row['FirstName'];
-
+          
           ?>
           <h3>
             <font color="red">Welcome Back :</font> <?php echo $name; ?>
@@ -68,15 +69,41 @@ if (strlen($_SESSION['uid']) == 0) {
                       <th colspan="2">Action</th>
                     </tr>
 
-                    <tr>
-                      <td colspan="1">1</td>
-                      <td colspan="2">464564654654</td>
-                      <td colspan="2">1</td>
-                      <td colspan="2">464564654654</td>
-                      <td colspan="1">1</td>
-                      <td colspan="1">464564654654</td>
-                      <td colspan="2"><button type="button" class="btn btn-secondary" onclick="">View</button></td>
-                    </tr>
+                    <!-- <?php 
+$result = mysqli_query($con, "select ID, CourseApplied,Gender,Category from tbladmapplications");
+$row1 = mysqli_fetch_array($result);
+while ($row = mysqli_fetch_row($result)) {
+  printf ('<tr>
+  <td colspan="1">1</td>
+  <td colspan="2">464564654654</td>
+  <td colspan="2"> %s </td>
+  <td colspan="2"> %s </td>
+  <td colspan="1"> %s </td>
+  <td colspan="1"> %s </td>
+  <td colspan="2"><button type="button" class="btn btn-secondary" onclick="">View</button></td>
+</tr>', $row[0], $row[1], $row[2], $row[3]);
+}
+?> -->
+
+<tr>
+  <td colspan="1">1</td>
+  <td colspan="2">CSE23023</td>
+  <td colspan="2">123</td>
+  <td colspan="2">MCA</td>
+  <td colspan="1">OBC</td>
+  <td colspan="1">Male</td>
+  <td colspan="2"><button type="button" class="btn btn-secondary" onclick="">View</button></td>
+</tr>
+<tr>
+  <td colspan="1">1</td>
+  <td colspan="2">CSE23081</td>
+  <td colspan="2">321</td>
+  <td colspan="2">M.Tech</td>
+  <td colspan="1">OBC</td>
+  <td colspan="1">Male</td>
+  <td colspan="2"><button type="button" class="btn btn-secondary" onclick="">View</button></td>
+</tr>
+        
                   </table>
                   </div>
                 </div>
