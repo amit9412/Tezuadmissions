@@ -157,7 +157,7 @@ if (isset($_POST['submit'])) {
                         </div>
                       <div class="col-12 col-sm-3 col-md-3">
                           <fieldset class="form-group position-relative has-icon-left">
-                          <button type="button" id="getOtp" style="cursor:not-allowed" name="getOtp" class="btn btn-link btn-md btn-block" onclick="sendMail(); showVerification();">Get OTP</button>
+                          <button type="button" id="getOtp" style="cursor:not-allowed" name="getOtp" class="btn btn-link btn-md btn-block"onclick=<?php sendMail(); showVerification();?> >Get OTP</button>
                             <!-- <div class="form-control-position">
                               <i class="la la-key"></i>
                             </div> -->
