@@ -48,7 +48,7 @@ if (strlen($_SESSION['uid']) == 0) {
                       Welcome to Tezpur University Admission Portal 2023
                     </div>
                     <div class="col-xl-3 col-lg-3 col-3">
-                      <button type="button" class="btn btn-primary" onclick="applictionStatus">Apply a New Appliaction</button>
+                      <button type="button" class="btn btn-primary" onclick="applictionStatus()">Apply a New Appliaction</button>
                     </div>
                   </div>
                   <hr>
@@ -242,6 +242,14 @@ if (strlen($_SESSION['uid']) == 0) {
     </div>
     <?php include('includes/footer.php'); ?>
     <!-- BEGIN VENDOR JS-->
+
+<script>
+function applicationStatus() { 
+  document.getElementById("demo").innerHTML = "Hello JavaScript!";
+}
+</script>
+
+
   </body>
 
   </html>
