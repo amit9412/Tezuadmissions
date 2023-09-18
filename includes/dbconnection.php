@@ -1,5 +1,5 @@
 <?php
-$con=mysqli_connect("localhost", "root", "", "camsdb");
+$con=mysqli_connect("localhost", "root", "", "Tezuadmissiondb");
 if(mysqli_connect_errno()){
 echo "Connection Fail".mysqli_connect_error();
 }
